@@ -1,0 +1,75 @@
+<div class="little-margin little-padding">
+  <div class="shadow-overlay">
+    <div class="wrapper">
+
+      <div class="content">
+        <div class="header">
+          <h1>Where your money goes</h1>
+          <p>Payments made by Chichester District Council to individual suppliers with a value over £500 made within
+            October.</p>
+        </div>
+        <hr class="header-hr">
+        <div class="search-bar">
+          <form>
+            <input type="text" placeholder="Search suppliers">
+            <div class="select-container">
+              <select>
+                <option value="0">Select pound rating</option>
+                <option value="1">Audi</option>
+              </select>
+            </div>
+            <button type="button" class="btn btn-gray">Reset</button>
+            <button type="submit" class="btn btn-blue">Search</button>
+          </form>
+        </div>
+
+        <div class="table-wrapper">
+          <div class="table-container">
+            <div class="table-shadow rounded-table">
+              <table>
+                <thead>
+                <tr>
+                  <th>Supplier</th>
+                  <th>Pound Rating</th>
+                  <th>Reference</th>
+                  <th>Value</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let something of [1,2,3,4,5]">
+                  <td>Supplier name</td>
+                  <td class="pound-td">
+                    <div class="pound-circle pound-blue"><span>&#163;</span></div>
+                    <div class="pound-circle pound-blue"><span>&#163;</span></div>
+                    <div class="pound-circle pound-blue"><span>&#163;</span></div>
+                    <div class="pound-circle pound-gray"><span>&#163;</span></div>
+                    <div class="pound-circle pound-gray"><span>&#163;</span></div>
+                  </td>
+                  <td>1231231</td>
+                  <td>1.231231</td>
+                </tr>
+                </tbody>
+
+              </table>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="paginate-wrapper">
+          <button class="btn-paginate"><span>&#8249;</span></button>
+          <button class="btn-paginate">1</button>
+          <button class="btn-paginate">2</button>
+          <button class="btn-paginate">3</button>
+          <button class="btn-paginate active">4</button>
+          <button class="btn-paginate"><span>&#8250;</span></button>
+        </div>
+
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
