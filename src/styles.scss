@@ -1,5 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400');
 
+
+@font-face {
+  font-family: 'fontello';
+  src: url('assets/fontello/font/fontello.eot?71243004');
+  src: url('assets/fontello/font/fontello.eot?71243004#iefix') format('embedded-opentype'),
+  url('assets/fontello/font/fontello.woff?71243004') format('woff'),
+  url('assets/fontello/font/fontello.ttf?71243004') format('truetype'),
+  url('assets/fontello/font/fontello.svg?71243004#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
 html, body {
   margin:0;
   background-color: #e4e4e4;

@@ -2,6 +2,8 @@
 
 The Software House Frontent test
 
+live-version: http://moczix.pl/the-software-house
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.5.
 
 ## Development server

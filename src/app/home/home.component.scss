@@ -331,6 +331,7 @@ $screen-lg: 992px;
   margin-top: 20px;
 
   .btn-paginate {
+    vertical-align: middle;
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f9f9f9+0,ebebeb+100 */
     background: rgb(249, 249, 249); /* Old browsers */
     /* IE9 SVG, needs conditional override of 'filter' to 'none' */
@@ -353,27 +354,13 @@ $screen-lg: 992px;
     font-family: Helvetica, serif;
     font-weight: bold;
 
-    span {
-      font-size: 1.4em;
-      vertical-align: middle;
-      position: relative;
-      top: -1px;
-      @media (min-width: $screen-md) {
-        top: -2px;
-      }
-      @media (min-width: $screen-lg) {
-        top: 0px;
-      }
-    }
+  }
 
-  }
   .btn-paginate:first-child, .btn-paginate:last-child {
-    position: relative;
-    top: -2px;
-    @media (min-width: $screen-lg) {
-      top: -1px;
-    }
+    font-family: "fontello";
+    font-size: 10px;
   }
+
 
   .active {
     color: #f2f2f2;
