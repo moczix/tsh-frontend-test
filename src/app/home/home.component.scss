@@ -362,6 +362,17 @@ $screen-lg: 992px;
     font-family: Helvetica, serif;
     font-weight: bold;
 
+    display: none;
+    &:nth-child(-n+5) {
+      display: initial;
+    }
+    &:nth-last-child(-n+2) {
+      display: initial;
+    }
+    @media (min-width: $screen-sm) {
+      display: initial;
+    }
+
   }
 
   .btn-paginate:disabled {
