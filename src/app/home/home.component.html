@@ -11,15 +11,16 @@
         <hr class="header-hr">
         <div class="search-bar">
           <form>
-            <input type="text" placeholder="Search suppliers">
+            <input type="text" placeholder="Search suppliers" name="query" [(ngModel)]="search.query"
+                   (ngModelChange)="search.page = ''">
             <div class="select-container">
-              <select>
-                <option value="0">Select pound rating</option>
-                <option value="1">Audi</option>
+              <select [(ngModel)]="search.rating" name="rating" (ngModelChange)="search.page = ''">
+                <option selected value="">Select pound rating</option>
+                <option *ngFor="let x of [1,2,3,4,5]" [ngValue]="x">{{x}}</option>
               </select>
             </div>
-            <button type="button" class="btn btn-gray">Reset</button>
-            <button type="submit" class="btn btn-blue">Search</button>
+            <button type="button" class="btn btn-gray" (click)="reset()">Reset</button>
+            <button type="submit" class="btn btn-blue" (click)="getPayments()">Search</button>
           </form>
         </div>
 
@@ -36,33 +37,34 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let something of [1,2,3,4,5]">
-                  <td>Supplier name</td>
+                <tr *ngFor="let payment of payments" (click)="selectedPayment = payment">
+                  <td>{{payment.payment_supplier}}</td>
                   <td class="pound-td">
-                    <div class="pound-circle pound-blue"><span>&#163;</span></div>
-                    <div class="pound-circle pound-blue"><span>&#163;</span></div>
-                    <div class="pound-circle pound-blue"><span>&#163;</span></div>
-                    <div class="pound-circle pound-gray"><span>&#163;</span></div>
-                    <div class="pound-circle pound-gray"><span>&#163;</span></div>
+                    <div class="pound-circle pound-blue"
+                         *ngFor="let blue of getArray(payment.payment_cost_rating | integer)"><span>&#163;</span></div>
+                    <div class="pound-circle pound-gray"
+                         *ngFor="let gray of getArray(5 - (payment.payment_cost_rating | integer))"><span>&#163;</span>
+                    </div>
                   </td>
-                  <td>1231231</td>
-                  <td>1.231231</td>
+                  <td>{{payment.payment_ref}}</td>
+                  <td>{{payment.payment_amount}}</td>
                 </tr>
                 </tbody>
 
               </table>
+
             </div>
+            <p class="text-center" *ngIf="!payments.length">No results found for your query</p>
           </div>
         </div>
 
 
-        <div class="paginate-wrapper">
-          <button class="btn-paginate">&#xe801;</button>
-          <button class="btn-paginate">1</button>
-          <button class="btn-paginate">2</button>
-          <button class="btn-paginate">3</button>
-          <button class="btn-paginate active">4</button>
-          <button class="btn-paginate">&#xe800;</button>
+        <div class="paginate-wrapper" *ngIf="payments.length">
+          <button class="btn-paginate" (click)="previousPage()" [disabled]="!pagination.left">&#xe801;</button>
+          <button class="btn-paginate" (click)="goToPage(key)" [class.active]="pagination.current == key "
+                  *ngFor="let key of pagination.links | keys">{{(key | integer) + 1}}
+          </button>
+          <button class="btn-paginate" (click)="nextPage()" [disabled]="!pagination.right">&#xe800;</button>
         </div>
 
 
@@ -72,4 +74,50 @@
   </div>
 </div>
 
+
+<div class="modal-wrapper" *ngIf="selectedPayment" [@slideInOut]="selectedPayment">
+  <div class="shadow-overlay">
+    <div class="wrapper">
+      <div class="content">
+        <button class="close-button" (click)="selectedPayment = null">&#xe802;</button>
+        <div class="header">
+          <h1>Payment Details</h1>
+        </div>
+        <hr class="header-hr">
+        <div class="table-wrapper">
+          <div class="table-container">
+            <div class="table-shadow rounded-table">
+              <table>
+                <thead>
+                <tr>
+                  <th>Supplier</th>
+                  <th>Pound Rating</th>
+                  <th>Reference</th>
+                  <th>Value</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>{{selectedPayment.payment_supplier}}</td>
+                  <td class="pound-td">
+                    <div class="pound-circle pound-blue"
+                         *ngFor="let blue of getArray(selectedPayment.payment_cost_rating | integer)">
+                      <span>&#163;</span></div>
+                    <div class="pound-circle pound-gray"
+                         *ngFor="let gray of getArray(5 - (selectedPayment.payment_cost_rating | integer))">
+                      <span>&#163;</span></div>
+                  </td>
+                  <td>{{selectedPayment.payment_ref}}</td>
+                  <td>{{selectedPayment.payment_amount}}</td>
+                </tr>
+                </tbody>
+
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 

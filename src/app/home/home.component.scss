@@ -6,6 +6,13 @@ $content-size: 994px;
 $screen-sm: 576px;
 $screen-md: 768px;
 $screen-lg: 992px;
+
+@mixin font-helvetica {
+  font-family: Helvetica;
+  font-style: normal;
+  font-variant: normal;
+}
+
 //994 - 986 = 8, 4px z kazdej strony!
 
 .little-margin {
@@ -22,6 +29,7 @@ $screen-lg: 992px;
 }
 
 .shadow-overlay {
+  background-color: rgb(208, 207, 207);
   background-color: rgba(#000, 0.05);
   margin-left: auto;
   margin-right: auto;
@@ -77,7 +85,7 @@ $screen-lg: 992px;
     margin-top: 1.2em;
     text-align: center;
     input, select, button {
-      font-family: Helvetica, serif;
+      @include font-helvetica;
       margin: 5px;
       display: block;
       @media (min-width: $screen-md) {
@@ -235,7 +243,7 @@ $screen-lg: 992px;
   }
 
   table {
-    font-family: Helvetica, serif;
+    @include font-helvetica;
     width: 100%;
     thead {
       background-color: $thead-bg-color;
@@ -356,6 +364,11 @@ $screen-lg: 992px;
 
   }
 
+  .btn-paginate:disabled {
+    color: #bfbfbf;
+    cursor: not-allowed;
+  }
+
   .btn-paginate:first-child, .btn-paginate:last-child {
     font-family: "fontello";
     font-size: 10px;
@@ -367,4 +380,29 @@ $screen-lg: 992px;
     background: #636363 !important;
     @include box-shadow(inset 0px 0px 5px 0px rgba(0, 0, 0, 0.75));
   }
+}
+
+.modal-wrapper {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  //height: 100%;
+  //background-color: rgba(0, 0, 0, 0.35);
+  .shadow-overlay {
+    @media (min-width: $screen-lg) {
+      width: 768px;
+    }
+    .content {
+      position: relative;
+      .close-button {
+        position: absolute;
+        right: 15px;
+        font-family: "fontello";
+        font-size: 1.4em;
+        background-color: transparent;
+        border: none;
+      }
+    }
+  }
+
 }
